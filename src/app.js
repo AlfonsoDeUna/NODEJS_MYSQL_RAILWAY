@@ -11,7 +11,7 @@ console.log ('servidor en el puerto 3000')
 
 app.get ('/', async (req, res) => {
     //res.send ("Implantación aplicaciones web5")
-    const [result] = await pool.query (`SELECT * from userdb.users`)
+    const [result] = await pool.query (`SELECT * from users`)
     res.json (result)
 })
 
@@ -21,7 +21,7 @@ app.get ('/ping', async(req, res) => {
 })
 
 app.get ('/create', async(req, res) => {
-    const result = await pool.query (`insert into userdb.users(name) values ("Alfonso")`)
+    const result = await pool.query (`insert into users(name) values ("Alfonso")`)
     console.log (result)
 
 
