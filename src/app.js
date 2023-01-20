@@ -11,11 +11,13 @@ console.log ('servidor en el puerto 3000')
 
 app.get ('/', async (req, res) => {
     //res.send ("Implantación aplicaciones web5")
-    
+    try{
         const [result] = await pool.query (`SELECT * from users`)
         res.json (result)
-    
-}) ().catch( e => { console.error(e) })
+    }catch (error){
+        console.log ("error")
+    }
+}) 
 
 app.get ('/ping', async(req, res) => {
     const [result] = await pool.query (`SELECT "HOLA MARIA" AS RESULT`)
@@ -23,8 +25,12 @@ app.get ('/ping', async(req, res) => {
 })
 
 app.get ('/create', async(req, res) => {
-    const result = await pool.query (`insert into users(name) values ("Alfonso")`)
+    
+    try{
+        const result = await pool.query (`insert into users(name) values ("Alfonso")`)
     console.log (result)
+}catch (error){
+    console.log ("error")
+}
 
-
-}) ().catch( e => { console.error(e) })
+});
