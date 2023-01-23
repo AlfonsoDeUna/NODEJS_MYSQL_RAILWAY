@@ -9,10 +9,10 @@ const app = express()
 app.listen (PORT)
 console.log ('servidor en el puerto 3000')
 
-app.get ('/', async (req, res) => {
+app.get ('/', (req, res) => {
     //res.send ("Implantación aplicaciones web5")
     try{
-        const [result] = await pool.query (`SELECT * from users`)
+        const [result] = pool.query (`SELECT * from users`)
         res.json (result)
     }catch (error){
         console.log (error)
