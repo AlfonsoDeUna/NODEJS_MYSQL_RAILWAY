@@ -15,7 +15,7 @@ app.get ('/', async (req, res) => {
         const [result] = await pool.query (`SELECT * from users`)
         res.json (result)
     }catch (error){
-        console.log ("error")
+        console.log (error)
     }
 }) 
 
@@ -30,7 +30,7 @@ app.get ('/create', async(req, res) => {
         const result = await pool.query (`insert into users(name) values ("Alfonso")`)
     console.log (result)
 }catch (error){
-    console.log ("error")
+    console.log ("error2")
 }
 
 });
