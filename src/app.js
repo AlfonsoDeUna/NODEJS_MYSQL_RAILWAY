@@ -9,28 +9,32 @@ const app = express()
 app.listen (PORT)
 console.log ('servidor en el puerto 3000')
 
-app.get ('/', (req, res) => {
+app.get ('/', async (req, res) => {
     //res.send ("Implantación aplicaciones web5")
     try{
-        const [result] = pool.query (`SELECT * from users`)
+        const [result] = await pool.query (`SELECT * from users`)
         res.json (result)
     }catch (error){
         console.log (error)
     }
 }) 
 
-app.get ('/ping', (req, res) => {
-    const [result] =  pool.query (`SELECT "HOLA MARIA" AS RESULT`)
-    res.send (result[0])
+app.get ('/ping', async(req, res) => {
+    try{
+        const [result] = await pool.query (`SELECT "HOLA MARIA" AS RESULT`)
+        res.send (result[0])
+    }catch (error){
+        console.log (error)
+    }
 })
 
-app.get ('/create', (req, res) => {
+app.get ('/create', async(req, res) => {
     
     try{
-        const result =  pool.query (`insert into users(name) values ("Alfonso")`)
+        const result = await pool.query (`insert into users(name) values ("Alfonso")`)
     console.log (result)
 }catch (error){
-    console.log ("error2")
+    console.log ("error")
 }
 
 });
