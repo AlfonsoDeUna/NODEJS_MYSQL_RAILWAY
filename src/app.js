@@ -19,15 +19,15 @@ app.get ('/', (req, res) => {
     }
 }) 
 
-app.get ('/ping', async(req, res) => {
-    const [result] = await pool.query (`SELECT "HOLA MARIA" AS RESULT`)
+app.get ('/ping', (req, res) => {
+    const [result] =  pool.query (`SELECT "HOLA MARIA" AS RESULT`)
     res.send (result[0])
 })
 
-app.get ('/create', async(req, res) => {
+app.get ('/create', (req, res) => {
     
     try{
-        const result = await pool.query (`insert into users(name) values ("Alfonso")`)
+        const result =  pool.query (`insert into users(name) values ("Alfonso")`)
     console.log (result)
 }catch (error){
     console.log ("error2")
